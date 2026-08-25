@@ -1,3 +1,4 @@
+import functools
 import math
 import sys
 
@@ -17,13 +18,13 @@ class Lisp:
                 func = True
             elif c == "-" and not func:
                 num += c
-            elif c in "+-*":
+            elif c in "+-*/":
                 stack.append(c)
                 func = False
             elif c == ")":
                 print(stack)
                 nums = []
-                while stack[-1] not in ["+","-", "*"]:
+                while stack[-1] not in ["+","-", "*", "/"]:
                     nums.append(stack.pop())
                 opp = stack.pop()
                 if opp == "+":
@@ -34,7 +35,9 @@ class Lisp:
                     stack.append(sum(nums))
                 elif opp == "*":
                     stack.append(math.prod(nums))
-        return stack.pop()
+                elif opp == "/":
+                    stack.append(functools.reduce(lambda x, y: int(x) / int(y), nums[::-1]))
+        return stack.pop() if stack else int(num)
 
 
 # Press the green button in the gutter to run the script.

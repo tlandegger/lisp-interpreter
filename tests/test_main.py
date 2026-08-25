@@ -11,6 +11,7 @@ class TestLisp(unittest.TestCase):
         self.assertEqual(Lisp.parse("(+ 0 0)"), 0)
         self.assertEqual(Lisp.parse("(- 3 7)"), -4)
         self.assertEqual(Lisp.parse("(* 8 7)"), 56)
+        self.assertEqual(Lisp.parse("(/ 8 4)"), 2)
 
     def test_negative_literals(self):
         self.assertEqual(Lisp.parse("(+ -5 5)"), 0)
@@ -34,6 +35,10 @@ class TestLisp(unittest.TestCase):
     def test_deep_mixed(self):
         self.assertEqual(Lisp.parse("(+ (- (+ 2 3) (- 8 4)) (+ (- 6 1) (+ 0 2)))"), 8)
         self.assertEqual(Lisp.parse("(- (+ (- 1 2) (+ 3 4)) (- (+ 5 6) (- 7 8)))"), -6)
+
+    def test_bare_atoms(self):
+        self.assertEqual(Lisp.parse("42"), 42)
+        self.assertEqual(Lisp.parse("-7"), -7)
 
     def test_large_ints(self):
         self.assertEqual(Lisp.parse("(+ 999999999999 1)"), 1000000000000)
