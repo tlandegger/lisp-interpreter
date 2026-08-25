@@ -6,14 +6,20 @@ class Lisp:
     def parse(s: str) -> int:
         stack = []
         num = ""
+        func = False
         for c in s:
             if c in "1234567890":
                 num += c
             elif num:
                 stack.append(int(num))
                 num = ""
-            if c in "+-*":
+            if c == "(":
+                func = True
+            elif c == "-" and not func:
+                num += c
+            elif c in "+-*":
                 stack.append(c)
+                func = False
             elif c == ")":
                 print(stack)
                 nums = []
@@ -33,6 +39,10 @@ class Lisp:
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print(Lisp().parse(sys.argv[1]))
+    if len(sys.argv) > 1:
+        print(Lisp().parse(sys.argv[1]))
+    else:
+        print("call main.py with a lisp expression as a string to parse it")
+
 
 

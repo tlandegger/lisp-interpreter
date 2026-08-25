@@ -12,10 +12,10 @@ class TestLisp(unittest.TestCase):
         self.assertEqual(Lisp.parse("(- 3 7)"), -4)
         self.assertEqual(Lisp.parse("(* 8 7)"), 56)
 
-    # def test_negative_literals(self):
-    #     self.assertEqual(Lisp.parse("(+ -5 5)"), 0)
-    #     self.assertEqual(Lisp.parse("(- -5 -3)"), -2)
-    #     self.assertEqual(Lisp.parse("(+ -2 -3)"), -5)
+    def test_negative_literals(self):
+        self.assertEqual(Lisp.parse("(+ -5 5)"), 0)
+        self.assertEqual(Lisp.parse("(- -5 -3)"), -2)
+        self.assertEqual(Lisp.parse("(+ -2 -3)"), -5)
 
     def test_single_nesting(self):
         self.assertEqual(Lisp.parse("(+ (+ 1 2) 3)"), 6)
