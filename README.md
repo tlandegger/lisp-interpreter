@@ -1,1 +1,1 @@
-An interpreter for a simplified version of lisp. Supports addition, subtraction, and multiplication.
+An interpreter for a simplified version of lisp. Supports addition, subtraction, multiplication, and division.
