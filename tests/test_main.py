@@ -10,6 +10,7 @@ class TestLisp(unittest.TestCase):
         self.assertEqual(Lisp.parse("(- 10 4)"), 6)
         self.assertEqual(Lisp.parse("(+ 0 0)"), 0)
         self.assertEqual(Lisp.parse("(- 3 7)"), -4)
+        self.assertEqual(Lisp.parse("(* 8 7)"), 56)
 
     # def test_negative_literals(self):
     #     self.assertEqual(Lisp.parse("(+ -5 5)"), 0)

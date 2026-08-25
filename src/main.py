@@ -1,3 +1,4 @@
+import math
 import sys
 
 class Lisp:
@@ -11,20 +12,22 @@ class Lisp:
             elif num:
                 stack.append(int(num))
                 num = ""
-            if c in "+-":
+            if c in "+-*":
                 stack.append(c)
             elif c == ")":
                 print(stack)
                 nums = []
-                while stack[-1] not in ["+","-"]:
+                while stack[-1] not in ["+","-", "*"]:
                     nums.append(stack.pop())
                 opp = stack.pop()
                 if opp == "+":
                     stack.append(sum(nums))
-                if opp == "-":
+                elif opp == "-":
                     nums = [n * -1 for n in nums]
                     nums[-1] *= -1
                     stack.append(sum(nums))
+                elif opp == "*":
+                    stack.append(math.prod(nums))
         return stack.pop()
 
 
