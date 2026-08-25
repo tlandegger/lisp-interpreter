@@ -22,7 +22,6 @@ class Lisp:
                 stack.append(c)
                 func = False
             elif c == ")":
-                print(stack)
                 nums = []
                 while stack[-1] not in ["+","-", "*", "/"]:
                     nums.append(stack.pop())
@@ -36,7 +35,7 @@ class Lisp:
                 elif opp == "*":
                     stack.append(math.prod(nums))
                 elif opp == "/":
-                    stack.append(functools.reduce(lambda x, y: int(x) / int(y), nums[::-1]))
+                    stack.append(functools.reduce(lambda x, y: int(x) // int(y), nums[::-1]))
         return stack.pop() if stack else int(num)
 
 
